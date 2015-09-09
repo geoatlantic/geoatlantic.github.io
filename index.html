@@ -8,10 +8,22 @@
   <h1>Homework 2...</h1>
 </div>
 <script>
-var data = ["Object.features.properties.mag" > 4]; // This is a global -- we'll talk about it in class.
+var data // This is a global -- we'll talk about it in class.
 var url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
 d3.json(url, function(error, quakes) {
   if (error) console.log(error);
+  
+var data = [4, 8, 15, 16, 23, 42];
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text(function(d) { return d; });
+  
   data = quakes; // Setting the value of the global here.
   // All your code goes here, that is, in between the two curly brackets {...}
   // "data" is an Object with properties (you can inspect "data" in the developer's console)
