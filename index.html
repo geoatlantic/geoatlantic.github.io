@@ -12,7 +12,7 @@ var data; // This is a global -- we'll talk about it in class.
 var url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
 d3.json(url, function(error, quakes) {
   if (error) console.log(error);
-  data = quakes; // Setting the value of the global here.
+  data = [features.properties.mag > 3];quakes; // Setting the value of the global here.
   // All your code goes here, that is, in between the two curly brackets {...}
   // "data" is an Object with properties (you can inspect "data" in the developer's console)
   console.log("This is the data object from USGS:", data);
